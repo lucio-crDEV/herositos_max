@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import * as mapboxgl from 'mapbox-gl';
 
 @Component({
   selector: 'app-full-screen',
   templateUrl: './full-screen.component.html',
-  styles: [
+  styles: [`
+    #mapa{
+      height: 100%;
+      width: 100%;
+    } `
   ]
 })
 export class FullScreenComponent implements OnInit {
@@ -11,6 +16,14 @@ export class FullScreenComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
 
+    var map = new mapboxgl.Map({
+      container: 'mapa',
+      style: 'mapbox://styles/mapbox/streets-v11',
+     // longitud, latitud en mapbox (gratis) =/= google (pide metodos de pago): latitud, longitud  OJITO!!
+      center: [-70.5960339176716, -33.622143431191766],
+      zoom: 12
+    });
+    
+  }
 }
